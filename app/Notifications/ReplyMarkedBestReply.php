@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NewReplyAdded extends Notification implements ShouldQueue
+class ReplyMarkedBestReply extends Notification implements ShouldQueue
 {
     use Queueable;
     public $discussion;
@@ -43,8 +43,8 @@ class NewReplyAdded extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('New reply was added to your discussion')
-                    ->action('view Discussion', route('discussion.show', $this->discussion->slug))
+                    ->line('Your reply was marked as best reply')
+                    ->action('View Discussion', route('discussion.show',$this->discussion->slug))
                     ->line('Thank you for using our application!');
     }
 
@@ -61,3 +61,4 @@ class NewReplyAdded extends Notification implements ShouldQueue
         ];
     }
 }
+ 

@@ -50,7 +50,12 @@
                                  </li>
                             </a>  
                     @endauth
-                       
+
+                        <li class="nav-items">
+                            <a href="{{route('discussion.index')}}" class="nav-link">
+                                Discussion
+                            </a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -111,7 +116,9 @@
                          @foreach ($channels as $channel)
                            
                          <li class="list-group-item">
-                               {{$channel->name}}
+                         <a href="{{route('discussion.index')}}?channel={{$channel->slug}}">
+                            {{$channel->name}}
+                        </a>
                          </li>
                        
                         @endforeach
